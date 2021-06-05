@@ -4612,7 +4612,7 @@ chat_kick(result.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},
 function(arg,data) 
 usertext = '\n ᪣ العضو ⤌ ['..data.first_name_..'](t.me/'..(data.username_ or 'Soon_ban')..')'
-status  = '\n ᪣ تم حظره عام من {'..Groups..'} مجموعه'
+status  = '\n ᪣ تم حظرو عام من الجروبات '
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4658,7 +4658,7 @@ send(msg.chat_id_, msg.id_, " ?? لا يمكنك حظر مبرمج السورس 
 return false 
 end
 usertext = '\n ᪣ العضو ⤌ ['..result.title_..'](t.me/'..(username or 'Soon_ban')..')'
-status  = '\n ᪣ تم حظره عام من {'..Groups..'} مجموعه'
+status  = '\n ᪣ تم حظرو عام من الجروبات '
 texts = usertext..status
 database:sadd(bot_id..'GBan:User', result.id_)
 else
@@ -4705,11 +4705,11 @@ database:sadd(bot_id..'GBan:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n ᪣ العضو ⤌ ['..data.first_name_..'](t.me/'..(data.username_ or 'Soon_ban')..')'
-status  = '\n ᪣ تم حظره عام من {'..Groups..'} مجموعه'
+status  = '\n ᪣ تم حظرو عام من الجروبات '
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n ᪣ العضو ⤌ '..userid..''
-status  = '\n ᪣ تم حظره عام من {'..Groups..'} مجموعه'
+status  = '\n ᪣ تم حظرو عام من الجروبات '
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4920,7 +4920,7 @@ status  = '\n ᪣ تم الغاء (الحظر-الكتم) عام من الجرو
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n ᪣ العضو ⤌ '..userid..''
-status  = '\n ᪣ تم حظره عام من {'..Groups..'} مجموعه'
+status  = '\n ᪣ تم الغاء (الحظر-الكتم) عام من الجروبات '
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -10105,17 +10105,17 @@ end
  if text == "الرابط" then 
 local status_Link = database:get(bot_id.."Link_Group:status"..msg.chat_id_)
 if not status_Link then
-send(msg.chat_id_, msg.id_," ⚔️ الرابط معطل") 
+send(msg.chat_id_, msg.id_," الرابط معطل") 
 return false  
 end
 local link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,'\n◁━━━━᪣🅢🅞🅞🅝᪣━━━━▷\n ['..linkGroup..']')                          
+send(msg.chat_id_,msg.id_,'\n◁━━━━᪣🅢🅞🅞🅝᪣━━━━▷\n ['..LinkGp..']')                          
 else                
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if linkgpp.ok == true then 
 database:set(bot_id.."Private:Group:Link"..msg.chat_id_,linkgpp.result)
-linkgp = '\n ['..linkGroup..']'
+linkgp = '\n◁━━━━᪣🅢🅞🅞🅝᪣━━━━▷\n ['..LinkGp..']'
 else
 linkgp = ' ᪣ لا يوجد رابط ارسل ضع رابط'
 end  
@@ -12830,7 +12830,7 @@ else
 if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
 send(msg.chat_id_, msg.id_,'[\n    ꙰🦅• بيك عزيزي '..Name..' \n    ꙰🦅•𝐮𝐬𝐞𝐫   '..Name..' ↝🇧🇷\n     ꙰🦅•𝐦𝐬𝐠  '..Msguser..'.↝🇧🇷\n     ꙰🦅•𝐒𝐭𝐚𝐬  '..Rutba(msg.sender_user_id_,msg.chat_id_)..' ↝🇧🇷\n     ꙰🦅•𝐢𝐝 '..msg.sender_user_id_..' ↝🇧🇷\n    ꙰🦅•𝗖𝗛  @Soon_ban ↝🇧🇷\n')
 else
-send(msg.chat_id_, msg.id_, '\n ᪣ الصوره ⇜ ليس لديك صور في حسابك'..'[\n    ꙰🦅•𝐮??𝐞𝐫  '..username..'\n     ꙰🦅•𝐦𝐬𝐠  '..Msguser..'\n     ꙰🦅•𝐢𝐝 '..msg.sender_user_id_..'\n    ꙰🦅•𝗖𝗛 @Soon_ban\n')
+send(msg.chat_id_, msg.id_, '\n ᪣ الصوره ⇜ ليس لديك صور في حسابك'..'[\n    ꙰🦅•𝐮𝐬𝐞𝐫  '..username..'\n     ꙰🦅•𝐦𝐬𝐠  '..Msguser..'\n     ꙰🦅•𝐢𝐝 '..msg.sender_user_id_..'\n    ꙰🦅•𝗖𝗛 @Soon_ban\n')
 end 
 end
 end
@@ -14803,7 +14803,7 @@ keyboard.inline_keyboard = {
 },
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/OSDDR&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
 ----------------------------------------------------------------------------
@@ -15237,7 +15237,7 @@ keyboard.inline_keyboard = {
 {text = '🛡️القائمه الرائسيه🛡️', callback_data="/help8"},
 },
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&photo=https://t.me/OSDDR&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 if Text == '/help4' then
 if not Mod(data) then
